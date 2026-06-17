@@ -1,0 +1,44 @@
+{
+  "name": "quant-trader-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "多智星 - 多智能体量化回测平台",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@ant-design/charts": "^2.1.0",
+    "@ant-design/icons": "^5.5.2",
+    "@ant-design/icons-svg": "^4.4.0",
+    "@tanstack/react-query": "^5.60.0",
+    "antd": "^5.22.7",
+    "axios": "^1.7.0",
+    "dayjs": "^1.11.0",
+    "echarts": "^5.5.1",
+    "echarts-for-react": "^3.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "zrender": "^5.5.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "caniuse-lite": "^1.0.30001756",
+    "eslint": "^10.4.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "less": "^4.2.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.61.0",
+    "vite": "^6.0.0"
+  }
+}
