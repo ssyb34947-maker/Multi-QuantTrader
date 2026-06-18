@@ -16,7 +16,7 @@ interface AppState {
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
-      theme: 'dark',
+      theme: 'light',
       sidebarCollapsed: false,
       loading: false,
       setTheme: (theme) => set({ theme }),

@@ -71,11 +71,52 @@ button,
 }
 
 .app-shell {
+  height: 100vh;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .app-sider {
+  height: 100vh;
   border-right: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.app-sider .ant-layout-sider-children {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-nav-menu {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.app-sider-footer {
+  margin-top: auto;
+  padding: 12px 8px 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(248, 250, 252, 0.72);
+}
+
+.ant-layout-sider-dark .app-sider-footer {
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.app-github-link {
+  height: 40px;
+  justify-content: flex-start;
+}
+
+.ant-layout-sider-collapsed .app-sider-footer {
+  padding: 12px 8px 16px;
+}
+
+.ant-layout-sider-collapsed .app-github-link {
+  width: 100%;
+  justify-content: center;
+  padding-inline: 0;
 }
 
 .app-logo {
@@ -111,7 +152,8 @@ button,
 }
 
 .app-content {
-  min-height: calc(100vh - 68px);
+  height: calc(100vh - 68px);
+  min-height: 0;
   padding: 24px;
   overflow: auto;
 }

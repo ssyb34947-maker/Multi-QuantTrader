@@ -51,6 +51,7 @@ const columns = [
   { title: '区间', key: 'range', width: 230, render: (_: unknown, item: Backtest) => <Text className="mono">{item.start_date} / {item.end_date}</Text> },
   { title: '状态', dataIndex: 'status', key: 'status', width: 110, render: (status: BacktestStatus) => <Tag color={statusMap[status]?.color ?? 'default'}>{statusMap[status]?.text ?? status}</Tag> },
   { title: '年化', key: 'annualized_return', width: 110, render: (_: unknown, item: Backtest) => item.result ? <Text strong style={{ color: '#16a34a' }}>{item.result.annualized_return}%</Text> : <Progress percent={62} size="small" /> },
+  { title: 'Alpha', key: 'alpha', width: 110, render: (_: unknown, item: Backtest) => item.result ? <Text strong style={{ color: item.result.alpha >= 0 ? '#16a34a' : '#dc2626' }}>{item.result.alpha}%</Text> : '-' },
   { title: '回撤', key: 'max_drawdown', width: 110, render: (_: unknown, item: Backtest) => item.result ? <Text strong style={{ color: '#dc2626' }}>{item.result.max_drawdown}%</Text> : '-' },
   { title: '胜率', key: 'win_rate', width: 100, render: (_: unknown, item: Backtest) => item.result ? <Text>{item.result.win_rate}%</Text> : '-' },
 ]
@@ -168,6 +169,8 @@ const Backtest: React.FC = () => {
               <Tag color="green">回测完成</Tag>
               <Text>总收益 {lastResult.result.total_return}%</Text>
               <Text>夏普 {lastResult.result.sharpe_ratio}</Text>
+              <Text>Alpha {lastResult.result.alpha}%</Text>
+              <Text>大盘年化 {lastResult.result.benchmark_annualized_return}%</Text>
               <Text>最大回撤 {lastResult.result.max_drawdown}%</Text>
               <Text>胜率 {lastResult.result.win_rate}%</Text>
             </div>

@@ -85,6 +85,10 @@ export interface BacktestResult {
   total_return: number
   annualized_return: number
   sharpe_ratio: number
+  benchmark_name: string
+  benchmark_return: number
+  benchmark_annualized_return: number
+  alpha: number
   max_drawdown: number
   win_rate: number
   profit_factor: number

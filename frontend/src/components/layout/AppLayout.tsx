@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { Avatar, Badge, Button, Dropdown, Layout, Menu, Space, Switch, Typography, theme } from 'antd'
+import { Avatar, Badge, Button, Dropdown, Layout, Menu, Space, Switch, Tooltip, Typography, theme } from 'antd'
 import {
   BellOutlined,
   DashboardOutlined,
@@ -22,6 +22,8 @@ const { Header, Sider, Content } = Layout
 const { Text } = Typography
 
 type MenuItem = Required<MenuProps>['items'][number]
+
+const GITHUB_REPO_URL = 'https://github.com/ssyb34947-maker/Multi-QuantTrader'
 
 const menuItems: MenuItem[] = [
   { key: '/', icon: <DashboardOutlined />, label: '总览' },
@@ -75,6 +77,7 @@ const AppLayout: React.FC = () => {
         </div>
 
         <Menu
+          className="app-nav-menu"
           theme={isDark ? 'dark' : 'light'}
           mode="inline"
           selectedKeys={[selectedKey]}
@@ -82,6 +85,23 @@ const AppLayout: React.FC = () => {
           onClick={({ key }) => navigate(key)}
           style={{ borderInlineEnd: 'none', padding: '12px 8px' }}
         />
+
+        <div className="app-sider-footer">
+          <Tooltip title={sidebarCollapsed ? 'GitHub 仓库' : undefined} placement="right">
+            <Button
+              block={!sidebarCollapsed}
+              type="text"
+              className="app-github-link"
+              aria-label="打开 GitHub 仓库"
+              icon={<GithubOutlined />}
+              href={GITHUB_REPO_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {!sidebarCollapsed && 'GitHub 仓库'}
+            </Button>
+          </Tooltip>
+        </div>
       </Sider>
 
       <Layout>
