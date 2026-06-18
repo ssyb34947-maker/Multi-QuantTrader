@@ -289,6 +289,7 @@ class BacktestEngine:
 
         # Monthly returns
         monthly_returns = self._calc_monthly_returns(equity_series)
+        benchmark = self._calc_benchmark_performance()
 
         # Win rate & profit factor
         total_trades = trade_analysis.get("total", {}).get("total", len(trades_list))
@@ -305,11 +306,17 @@ class BacktestEngine:
         max_drawdown_pct = drawdown_analysis.get("max", {}).get("drawdown", 0.0)
         sharpe_ratio = sharpe_analysis.get("sharperatio", 0.0) or 0.0
         annualized_return = returns_analysis.get("rnorm100", total_return)
+        benchmark_annualized_return = benchmark.get("annualized_return", 0.0)
+        alpha = float(annualized_return) - benchmark_annualized_return
 
         return {
             "total_return": round(total_return, 4),
             "annualized_return": round(float(annualized_return), 4),
             "sharpe_ratio": round(float(sharpe_ratio), 4),
+            "benchmark_name": benchmark.get("name", "CSI 2000 equal-weight"),
+            "benchmark_return": round(float(benchmark.get("total_return", 0.0)), 4),
+            "benchmark_annualized_return": round(float(benchmark_annualized_return), 4),
+            "alpha": round(float(alpha), 4),
             "max_drawdown": round(float(max_drawdown_pct), 4),
             "win_rate": round(float(win_rate), 4),
             "profit_factor": round(float(profit_factor), 4),
@@ -319,6 +326,38 @@ class BacktestEngine:
             "trades": trades_list,
             "monthly_returns": monthly_returns,
         }
+
+    def _calc_benchmark_performance(self) -> dict:
+        benchmark = {
+            "name": "CSI 2000 equal-weight",
+            "total_return": 0.0,
+            "annualized_return": 0.0,
+        }
+        processed_path = PROJECT_DATA_ROOT / "processed" / "stock_daily_csi2000_qfq_20260101_20260531.csv"
+        if not processed_path.exists():
+            return benchmark
+
+        try:
+            df = pd.read_csv(
+                processed_path,
+                usecols=["date", "pct_change"],
+                parse_dates=["date"],
+                encoding="utf-8-sig",
+            )
+            df = df[(df["date"] >= pd.Timestamp(self.start_date)) & (df["date"] <= pd.Timestamp(self.end_date))]
+            daily_returns = df.groupby("date")["pct_change"].mean().dropna() / 100
+            if daily_returns.empty:
+                return benchmark
+
+            total_return = ((1 + daily_returns).prod() - 1) * 100
+            annualized_return = ((1 + total_return / 100) ** (252 / len(daily_returns)) - 1) * 100
+            return {
+                "name": benchmark["name"],
+                "total_return": round(float(total_return), 4),
+                "annualized_return": round(float(annualized_return), 4),
+            }
+        except Exception:
+            return benchmark
 
     def _calc_monthly_returns(self, equity_series: list[dict]) -> list[dict]:
         if not equity_series:
@@ -345,6 +384,10 @@ class BacktestEngine:
             "total_return": 0.0,
             "annualized_return": 0.0,
             "sharpe_ratio": 0.0,
+            "benchmark_name": "CSI 2000 equal-weight",
+            "benchmark_return": 0.0,
+            "benchmark_annualized_return": 0.0,
+            "alpha": 0.0,
             "max_drawdown": 0.0,
             "win_rate": 0.0,
             "profit_factor": 0.0,

@@ -46,6 +46,10 @@ class BacktestResultOut(BaseModel):
     total_return: float = 0.0
     annualized_return: float = 0.0
     sharpe_ratio: float = 0.0
+    benchmark_name: str = "CSI 2000 equal-weight"
+    benchmark_return: float = 0.0
+    benchmark_annualized_return: float = 0.0
+    alpha: float = 0.0
     max_drawdown: float = 0.0
     win_rate: float = 0.0
     profit_factor: float = 0.0

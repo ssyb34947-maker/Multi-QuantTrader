@@ -14,8 +14,8 @@ from app.models.user import User
 
 class _DemoUser:
     """Minimal user stub for demo mode — bypasses all auth."""
-    id = 0
-    username = "demo"
+    id = 2  # matches duozhixing-demo user in DB
+    username = "duozhixing-demo"
     email = "demo@local"
     role = "admin"
     hashed_password = ""
