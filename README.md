@@ -1,6 +1,6 @@
-<h1>多智星 —— 多智能体量化回测平台</h1>
+<h1 align="center">多智星 —— 多智能体量化回测平台</h1>
 
-<p align='center'>西南财经大学《算法交易》课程项目</p>
+<p align='center'><strong>西南财经大学《算法交易》课程项目</strong></p>
 
 <p align="center">
 <a href="#">
