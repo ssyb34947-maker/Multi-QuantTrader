@@ -25,10 +25,10 @@
 <img src='img/home.png' alt='home' align='center'>
 <p align='center'>多智星平台界面</p>
 
-<img src='img/agent.png' alt='agent' align='center'>
+<img src='img/agents.png' alt='agent' align='center'>
 <p align='center'>低代码平台</p>
 
-<img src='img/backtest.png' alt='backtest' align='center'>
+<img src='img/backtrader.png' alt='backtrader' align='center'>
 <p align='center'>回测引擎</p>
 
 ---
