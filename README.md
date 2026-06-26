@@ -1,8 +1,35 @@
-# 多智星 —— 多智能体量化回测平台
+<h1>多智星 —— 多智能体量化回测平台</h1>
 
-> 西南财经大学《算法交易》课程项目
+<p align='center'>西南财经大学《算法交易》课程项目</p>
+
+<p align="center">
+<a href="#">
+<img src="https://img.shields.io/badge/FastAPI-12%2B-blue" alt="FastAPI" width="120" height="30">
+</a>
+<a href="#">
+<img src="https://img.shields.io/badge/Python-12%2B-blue" alt="Python" width="120" height="30">
+</a>
+<a href="#">
+<img src="https://img.shields.io/badge/BackTrader-8%2B-blue" alt="BackTrader" width="120" height="30">
+</a>
+<a href="#">
+<img src="https://img.shields.io/badge/Langchain-12%2B-blue" alt="Langchain" width="120" height="30">
+</a>
+
+</p>
+
+
 
 **多智星** 是一款面向金融场景的**低代码多智能体量化回测平台**。平台以降低量化策略开发门槛为核心目标，通过融合基于大语言模型的多智能体协作与专业级回测引擎，模拟专业基金公司，为用户提供从策略构思、回测验证到智能决策的一站式解决方案。
+
+<img src='img/home.png' alt='home' align='center'>
+<p align='center'>多智星平台界面</p>
+
+<img src='img/agent.png' alt='agent' align='center'>
+<p align='center'>低代码平台</p>
+
+<img src='img/backtest.png' alt='backtest' align='center'>
+<p align='center'>回测引擎</p>
 
 ---
 
